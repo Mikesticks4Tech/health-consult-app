@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Health Consult App</title>
+    <link href="./output.css" rel="stylesheet" />
+  </head>
+ <body class="min-h-screen bg-black text-gray-100 flex items-center justify-center">
+    <div
+      class="w-full sm:max-w-md md:max-w-lg lg:max-w-xl p-4 sm:p-6 md:p-8 rounded-2xl bg-gray-900 shadow-xl"
+    >
+      <!-- Header -->
+    <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-teal-400">Health Consult</h1>
+        <p id="greeting" class="mt-1 sm:mt-2 text-gray-300 text-sm sm:text-base md:text-lg"></p>
+      </header>
+
+      <!-- Book Test Section -->
+      <section class="book-test">
+        <h2 class="text-xl font-semibold mb-4 text-white">Book a Lab Test</h2>
+
+        <form id="testForm" class="space-y-4">
+          <!-- Full Name -->
+          <div>
+            <label class="block mb-1 text-gray-300">Full Name</label>
+            <input
+              type="text"
+              required
+           class="w-full max-w-sm sm:max-w-md md:max-w-lg p-4 sm:p-6 md:p-8 rounded-2xl bg-gray-900 shadow-xl">
+          </class=>
+
+          <!-- Gender -->
+          <div>
+            <label class="block mb-1 text-gray-300">Gender</label>
+            <select
+              required
+              class="w-full rounded-lg bg-gray-800 border border-gray-700 px-3 py-2 sm:px-4 sm:py-3 text-white text-sm sm:text-base md:text-lg focus:outline-none focus:ring-2 focus:ring-teal-500">
+              <option value="">Select</option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>Non-Binary</option>
+            </select>
+          </div>
+
+          <!-- Test Type -->
+          <div>
+            <label class="block mb-1 text-gray-300">Test Type</label>
+            <select
+              required
+             class="w-full rounded-lg bg-gray-800 border border-gray-700 px-3 py-2 sm:px-4 sm:py-3 text-white text-sm sm:text-base md:text-lg focus:outline-none focus:ring-2 focus:ring-teal-500">
+              <option>Blood Test</option>
+              <option>Pregnancy Test</option>
+              <option>STD Tests</option>
+              <option>Hormone Test</option>
+            </select>
+          </div>
+
+          <!-- Preferred Date -->
+          <div>
+            <label class="block mb-1 text-gray-300">Preferred Date</label>
+            <input
+              type="date"
+              required
+              class="w-full rounded-lg bg-gray-800 border border-gray-700 px-3 py-2 sm:px-4 sm:py-3 text-white text-sm sm:text-base md:text-lg focus:outline-none focus:ring-2 focus:ring-teal-500">
+          </div>
+
+          <!-- Button -->
+         <button class="w-full sm:w-auto mt-4 px-4 py-3 sm:px-6 sm:py-4 rounded-lg bg-teal-500 hover:bg-teal-600 transition font-semibold text-black">
+            Book Test
+          </button>
+        </form>
+      </section>
+
+      <!-- Talk to a Pharmacist Section -->
+      <section class="talk-pharmacist mt-12 sm:mt-16 md:mt-20">
+        <h2 class="text-xl font-semibold mb-4 text-white">
+          Talk to a Pharmacist
+        </h2>
+
+        <div class="space-y-3">
+          <textarea
+            id="pharmacistMessage"
+            placeholder="Type your message here..."
+            class="w-full rounded-lg bg-gray-800 border border-gray-700 px-3 py-2 sm:px-4 sm:py-3 text-white text-sm sm:text-base md:text-lg focus:outline-none focus:ring-2 focus:ring-teal-500" rows="4">
+          </textarea>
+
+          <button
+            type="submit"
+            class="w-full sm:w-auto mt-4 px-4 py-3 sm:px-6 sm:py-4 rounded-lg bg-green-600 hover:bg-green-700 transition font-semibold text-black">
+            Send Message
+          </button>
+
+          <!-- Confirmation text remains bright green -->
+          <p id="confirmation" class="text-green-400 mt-2"></p>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      // Get the stored user name from localStorage
+      const name = localStorage.getItem("userFullName");
+
+      if (name) {
+        const greeting = document.getElementById("greeting");
+        greeting.textContent = `Hello, ${name}! Book your lab tests below.`;
+      }
+    </script>
+
+    <!-- pharmacist script -->
+    <script>
+      const sendBtn = document.getElementById("sendMessage");
+      const messageBox = document.getElementById("pharmacistMessage");
+      const confirmation = document.getElementById("confirmation");
+
+      sendBtn.addEventListener("click", () => {
+        const message = messageBox.value.trim();
+
+        if (!message) {
+          alert("Please type a message first!");
+          return;
+        }
+
+        // Simulate sending the message
+        confirmation.textContent =
+          "Your message has been sent to the pharmacist!";
+        messageBox.value = ""; // Clear textarea
+      });
+    </script>
+  </body>
+</html>
